@@ -2484,6 +2484,13 @@ app.on("ready", async () => {
   await applyProxyToSession();
   applyNativeThemeSource(store.get("appSkin"));
   createMainWin();
+    if (process.platform === "win32") {
+    shell.openExternal(
+      "https://megabookcollection.pages.dev/"
+    ).catch((error) => {
+      log.error("No se pudo abrir la web:", error);
+    });
+  }
 });
 app.on("before-quit", () => {
   isQuitting = true;
